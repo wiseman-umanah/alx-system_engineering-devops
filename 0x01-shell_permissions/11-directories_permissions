@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -R a=,+rwx dir
+chmod -R a=rwx dir
