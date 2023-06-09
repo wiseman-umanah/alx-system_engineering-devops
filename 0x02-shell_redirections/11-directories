@@ -1,0 +1,2 @@
+#!/bin/bash
+wc -l $(find -mindepth 1 -type d .[!.]* )
