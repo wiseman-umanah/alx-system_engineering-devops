@@ -1,2 +1,2 @@
 #!/bin/bash 
-cut -c 1 | paste -sd ''
+echo -e "$(cut -c 1 | paste -sd "")\n"
