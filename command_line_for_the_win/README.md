@@ -31,4 +31,4 @@
 
 ![Finished](image-3.png)
 
-Tasks are available via the link 👉 ![CMD-CHALLENGE](https://intranet.alxswe.com/rltoken/a83_NOBEtXgFr1Yqej0HYA)
+Tasks are available via the link 👉 [CMD-CHALLENGE](https://intranet.alxswe.com/rltoken/a83_NOBEtXgFr1Yqej0HYA)
