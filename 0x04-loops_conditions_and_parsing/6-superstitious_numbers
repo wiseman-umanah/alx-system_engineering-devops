@@ -12,5 +12,5 @@ do
 	elif ((i == 17)); then
 		echo "bad luck from Italy"
 	fi
-	i=$[$i+1]
+	i=$(( i + 1 ))
 done
