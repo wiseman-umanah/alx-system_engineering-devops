@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Bash script that displays: The content of the current directory
-for i in $(ls);
+shopt -s dotglob;
+for f in *;
 do
-	echo "$i" | cut -d '-' -f 2-;
+	echo "$f" | cut -d '-' -f 2-;
 done 
