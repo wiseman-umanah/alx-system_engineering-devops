@@ -2,7 +2,7 @@
 # prints "Best School" 10 times with until loop
 
 i="0"
-until [ $i -gt 9 ]
+until [ $i -lt 10 ]
 do
 	echo "Best School"
 	i=$(( i + 1 ))
