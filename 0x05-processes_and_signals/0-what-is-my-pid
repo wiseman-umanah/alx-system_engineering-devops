@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#This displays the current PID of the program
+echo $$

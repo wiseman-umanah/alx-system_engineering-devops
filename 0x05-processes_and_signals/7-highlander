@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# prints the message infinity and beyond for
+# eternity unless it is killed, not so ethernal after all :)
+
+# print the message forever
+while true;
+do
+	echo "To infinity and beyond";
+	sleep 2
+	trap "echo 'I am invincible!!!'" SIGTERM
+done
