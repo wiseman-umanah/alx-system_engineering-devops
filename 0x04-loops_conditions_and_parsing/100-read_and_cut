@@ -1,2 +1,11 @@
-#!/usr/bin/bash 
+#!/usr/bin/env bash
+# Bash script that displays the content of the file /etc/passwd
+
+exec {fd}<"/etc/passwd"
+declare -a input
+while IFS=":" read -r -a input -u $fd
+	do
+		echo "${input[0]}:${input[2]}:${input[5]}"
+	done
+exec {fd}>&-
 
