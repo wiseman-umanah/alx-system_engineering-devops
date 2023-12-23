@@ -7,5 +7,5 @@ id=$(pgrep "bash ./7-highlander" -f)
 # Terminate the infinate process
 if [ -n "$id" ]
 then
-  kill -15 "$id"
+  kill -9 "$id"
 fi
