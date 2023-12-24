@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Bash (init) script 101-manage_my_process that manages manage_my_process
+if [ "$#" -gt 1 ] || [ "$#" -lt 1 ]; then
+	echo "Usage: manage_my_process {start|stop|restart}";
+	exit 1;
+else
+	cmd="$1"
+	case "$1" in
+		"start"|"START")
+			./manage_my_process;
+			pidof manage_my_process>>/var/run/my_process.pid;
+			echo "manage_my_process started";;
+		"stop"|"STOP")
+			kill -9 pidof manage_my_process;
+			rm /var/run/my_process.pid;
+			echo "manage_my_process stopped";;
+		"restart"|"restart")
+			kill -9 pidof manage_my_process;
+			rm /var/run/my_process.pid;
+			./manage_my_process;
+			pidof manage_my_process>>/var/run/my_process.pid;
+			echo "manage_my_process restarted";;
+		*)
+			echo "Usage: manage_my_process {start|stop|restart}";;
+	esac
+fi
