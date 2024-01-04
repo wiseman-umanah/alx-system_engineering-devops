@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+#check for root user privileges
+if [ "$EUID" -ne 0 ]; then
+	echo "Please run as root"
+	exit 1
+fi
+
+new_host="127.0.0.2"
+new_fb="8.8.8.8"
+
+cp /etc/hosts /etc/hosts.backup
+echo -e "${new_host}\tlocalhost" >> /etc/hosts
+echo -e "${new_fb}\tfacebook.com" >> /etc/hosts

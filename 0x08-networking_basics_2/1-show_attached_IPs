@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ifconfig | grep -oP '(?<=inet )(\d+\.\d+\.\d+\.\d+)'
