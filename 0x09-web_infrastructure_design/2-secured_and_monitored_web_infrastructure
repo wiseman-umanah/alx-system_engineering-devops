@@ -3,3 +3,25 @@ Firewalls: These act as a barrier between the internal network and the outside w
 SSL (Secure Sockets Layer): SSL is a standard security technology for establishing an encrypted link between a web server and a browser. This ensures that all data transmitted between the web server and browsers remains private and integral. When data is sent from the client to the server, it is encrypted. Once it reaches the server and passes the necessary security checks, it is decrypted. The same process applies when data is sent back to the client. This encryption-decryption process secures the data transmission, making it difficult for hackers to intercept and understand the data.
 
 Monitoring Clients: These are tools or systems used to continuously monitor the health and performance of the network. They can track various metrics like server load, network traffic, application performance, etc. Monitoring clients act as a diagnostic tool, providing insights and alerts about the network's status. This helps in identifying potential issues before they cause system failures or disruptions. Effective monitoring ensures that the network and its components function optimally and reliably.
+
+Monitoring the Queries Per Second (QPS) of your web server is essential for understanding its performance and ensuring it can handle the load efficiently. QPS is a measure of how many requests your server is handling each second.
+
+
+DRAWBACKS
+
+Terminating SSL at the Load Balancer Level:
+
+Single Point of Decryption: When SSL termination occurs at the load balancer, all inbound encrypted traffic is decrypted at this point. This means the load balancer becomes a critical security point. If compromised, it can expose sensitive decrypted traffic.
+Increased Internal Traffic Vulnerability: After decryption at the load balancer, traffic often travels unencrypted to the backend servers. This can pose a risk if the internal network is not secure, as any intercepted internal traffic would be in plain text.
+Compliance and Regulation Issues: Some regulations and compliance standards require end-to-end encryption, meaning that data should remain encrypted as it moves through the entire network, not just at the edge.
+Having Only One MySQL Server Capable of Accepting Writes:
+
+Single Point of Failure: With only one database server handling all write operations, if it goes down, the entire application can become read-only or completely non-functional, impacting business operations.
+Scalability Issues: A single write-capable server can become a bottleneck as application demand grows. It may not be able to handle high volumes of write operations efficiently, leading to performance degradation.
+Backup and Recovery Challenges: Continuous write operations on a single server can complicate backup processes and increase the time required for recovery in the event of data loss.
+Servers with All the Same Components (Database, Web Server, and Application Server):
+
+Resource Contention: Having all services (database, web server, application server) on the same machine can lead to competition for system resources (CPU, memory, disk I/O), potentially degrading performance.
+Security Risks: Compromising one aspect of the server (e.g., the web server) could potentially give attackers access to the other components (e.g., the database), leading to more significant security breaches.
+Scaling Challenges: It's often less efficient to scale a server with multiple roles. For example, if the application needs more web server capacity but not database capacity, scaling such a multi-role server can be wasteful and complex.
+Maintenance and Updates: Updating or maintaining one component (like the database system) could require taking down the entire server, thereby affecting all services hosted on that server.
