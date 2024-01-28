@@ -1,0 +1,64 @@
+1. Client:
+   - The user's device (computer, smartphone, tablet) with a web browser.
+   - Initiates requests to access web pages or web applications.
+
+2. Internet:
+   - The medium through which the requests and responses travel between the client and the server.
+
+3. Web Server:
+   - A server that handles incoming HTTP/HTTPS requests from clients.
+   - Software examples: Apache, Nginx, Microsoft IIS.
+   - Serves static content like HTML, CSS, and JavaScript files.
+
+4. Application Server:
+   - Hosts and executes the business logic of web applications.
+   - Interacts with the web server and possibly a database server.
+   - Software/framework examples: Django (Python), Ruby on Rails (Ruby), Express (Node.js), ASP.NET (C#).
+
+5. Database Server:
+   - Stores, retrieves, and manages data for the web application.
+   - Examples of database management systems: MySQL, PostgreSQL, MongoDB, Microsoft SQL Server.
+
+6. Load-Balancer:
+	- A load balancer is the device or service that sits between the user and the server group and acts as an invisible facilitator, ensuring that all resource servers are used equally.
+	Examples of load balancers: HAproxy
+
+HAProxy (High Availability Proxy) is a versatile load balancer that can be configured both as Active-Active or Active-Passive, depending on your specific requirements and setup. The configuration should aligns with needs for traffic handling, redundancy, and high availability.
+
+Active-Active Configuration:
+In an Active-Active setup, all load balancers are actively handling traffic. This configuration is often used for load distribution, where incoming traffic is divided among multiple load balancers to optimize resource utilization and maximize throughout.
+
+Benefits:
+Improved performance, as traffic is distributed across multiple units.
+High availability, as there is no single point of failure.
+
+Use Cases:
+Environments with high traffic where load distribution is critical.
+Situations where you want to utilize all available resources efficiently.
+
+
+Active-Passive Configuration:
+In an Active-Passive setup, one load balancer is active and handles all traffic, while the other(s) remain idle as backups. If the active load balancer fails, one of the passive units takes over to ensure continued service availability.
+
+Benefits:
+Guarantees a backup in case of failure, providing high availability.
+Simpler to configure as traffic is handled by only one load balancer at a time.
+
+Use Cases:
+Environments where it's crucial to have a failover system in place for reliability.
+When traffic levels don’t justify the need for multiple active load balancers.
+
+
+Primary (Master) Database:
+The primary database is the main database that handles all the write operations (INSERT, UPDATE, DELETE). It's the authoritative source of data.
+Any changes made to the data in the primary database need to be propagated to the replica databases to keep them synchronized.
+
+Replica (Slave) Databases:
+Replica databases are copies of the primary database. They handle read-only operations (SELECT queries).
+The main purpose of replica databases is to distribute the read load, thereby reducing the workload on the primary database and increasing the system's overall capacity to handle read requests.
+Replica databases can also serve as backups and are used for data analytics, reporting, and other tasks that require intensive read operations but do not need real-time data.
+
+DRAWBACKS
+The design looks al good but lacks security checks which makes it vulnerable to hacks and people that may try to breach the network.
+If any device in the design fails, it may be impossible to quickly know because there's no form of monitoring or monitoring system take keeps reporting the network's health from time to time.
+SPOF can be seen in the aspect of SSL certificate of client's request and data encryption

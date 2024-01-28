@@ -1,0 +1,44 @@
+When a user wants to access the website, different activities behind the scene and how the user gets information from the data input is very crucial and important to analyse. In this simple web infrastructure, we see that the user types `www.foobar.com` (which is the website, the user wants to access).
+
+DNS - Domain Name System is a very important concept that helps converts links to IP address. Of course, users cannot know all the IP addresses of the websites they might want to access so this is the function of DNS to match links(input) to their specific IP address for the computer system to find the site over the internet.
+`foobar.com` is the root domain of which `www.foobar.com` is its sub-domain. `www.foobar.com` is a CNAME record. CNAME stands for Canonical name which points to the same application and it's hosted by the same server.
+
+The DNS checks if the domain name is available in the system's cache to map out the IP address before it moving to the web server to search for it if not found.
+
+It further moves to the server which just like in the diagram.
+The server is a computer or system that provides resources, data, services, or programs to other computers, known as clients, over a network. The server contains services such as:
+Directory services
+Database services
+Dynamic Name Services (DNS)
+File Server
+Index/Search Service, etc.
+
+After the server gets the required information based on the client's data, the server sends back the IP address which eventually gets to the client via the system in milliseconds. The user can finally access the site.
+
+GLOSSARY
+
+1. Client:
+   - The user's device (computer, smartphone, tablet) with a web browser.
+   - Initiates requests to access web pages or web applications.
+
+2. Internet:
+   - The medium through which the requests and responses travel between the client and the server.
+
+3. Web Server:
+   - A server that handles incoming HTTP/HTTPS requests from clients.
+   - Software examples: Apache, Nginx, Microsoft IIS.
+   - Serves static content like HTML, CSS, and JavaScript files.
+
+4. Application Server:
+   - Hosts and executes the business logic of web applications.
+   - Interacts with the web server and possibly a database server.
+   - Software/framework examples: Django (Python), Ruby on Rails (Ruby), Express (Node.js), ASP.NET (C#).
+
+5. Database Server:
+   - Stores, retrieves, and manages data for the web application.
+   - Examples of database management systems: MySQL, PostgreSQL, MongoDB, Microsoft SQL Server.
+
+DRAWBACKS
+One drawback of this design is that the server is connected through a  single network switch. If the switch failed or simply became disconnected from its power source, all of the servers connected to that switch would become inaccessible from the rest of the network.
+
+The issue of downtime and inability to scale may be experience due to the availability of only one server in the infrastructure design to handle all of user's request. The traffic will be too much for one server to handle if multiple clients are trying to access the site at the same time.
