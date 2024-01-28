@@ -1,0 +1,24 @@
+1. Client:
+   - The user's device (computer, smartphone, tablet) with a web browser.
+   - Initiates requests to access web pages or web applications.
+
+2. Internet:
+   - The medium through which the requests and responses travel between the client and the server.
+
+3. Web Server:
+   - A server that handles incoming HTTP/HTTPS requests from clients.
+   - Software examples: Apache, Nginx, Microsoft IIS.
+   - Serves static content like HTML, CSS, and JavaScript files.
+
+4. Application Server:
+   - Hosts and executes the business logic of web applications.
+   - Interacts with the web server and possibly a database server.
+   - Software/framework examples: Django (Python), Ruby on Rails (Ruby), Express (Node.js), ASP.NET (C#).
+
+5. Database Server:
+   - Stores, retrieves, and manages data for the web application.
+   - Examples of database management systems: MySQL, PostgreSQL, MongoDB, Microsoft SQL Server.
+
+6. Load-Balancer:
+	- A load balancer is the device or service that sits between the user and the server group and acts as an invisible facilitator, ensuring that all resource servers are used equally.
+	Examples of load balancers: HAproxy
