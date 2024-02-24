@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Establish connection to web server
+
+ssh -i ~/.ssh/school ubuntu@100.25.181.103
+
