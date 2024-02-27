@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# configures an ubuntu machine
-
+# Installs nginx server
 apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
