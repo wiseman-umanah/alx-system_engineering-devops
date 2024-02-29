@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#debug server wsith apache
+echo "FROM httpd:latest" > Dockerfile
+echo "Hello Holberton" > index.html
+echo "COPY ./index.html /usr/local/apache2/htdocs/" >> Dockerfile
+docker build -t apache .
+docker run -d -p 8080:80 apache
