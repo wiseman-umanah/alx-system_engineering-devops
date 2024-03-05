@@ -2,6 +2,7 @@
 #configures two ubuntu machine to have same specification
 apt update
 apt install -y nginx
+ufw allow 'Nginx HTTP'
 apt update
 apt install -y haproxy
 echo "Hello World!" > /var/www/html/index.html
