@@ -3,8 +3,6 @@
 apt update
 apt install -y nginx
 ufw allow 'Nginx HTTP'
-apt update
-apt install -y haproxy
 echo "Hello World!" > /var/www/html/index.html
 # shellcheck disable=SC2154
 replacement="server_name _;\nadd_header X-Served-By $HOSTNAME;"
