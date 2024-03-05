@@ -1,18 +1,23 @@
 #install and config HAproxy
-exec { 'Install HAproxy':
-  command => 'apt install -y haproxy',
+exec { 'Get Updates':
+  command  => 'apt-get update',
   provider => 'shell',
 }
 
-file_line { 'Configure HAproxy':
-  ensure => 'present',
-  path   => '/etc/nginx/sites_enabled/default',
-  line   => 'server {\nadd_header X-Served-By $hostname',
-  match  => 'server {',
-}
-
-exec {'restart engine':
-  command => 'service nginx restart',
+exec { 'Install nginx':
+  command  => 'apt install -y nginx',
   provider => 'shell',
 }
 
+file_line { 'Configure nginx':
+  ensure  => 'present',
+  path    => '/etc/nginx/sites_available/default',
+  after   => 'listen 80 default_server;',
+  line    => 'server {\nadd_header X-Served-By $HOSTNAME;',
+  require => Package['nginx'],
+}
+
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
+}
