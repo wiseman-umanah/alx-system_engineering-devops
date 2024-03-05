@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#configures two ubuntu machine to have same specification
+# shellcheck disable=SC2154
+replacement="server {\n\tadd_header X-Served-By $hostname;"
+sed -i "s/server {/$replacement/" /etc/nginx/sites-enabled/default
+service nginx restart
+
