@@ -13,7 +13,7 @@ file_line { 'Configure nginx':
   ensure  => 'present',
   path    => '/etc/nginx/sites_available/default',
   after   => 'listen 80 default_server;',
-  line    => 'server {\nadd_header X-Served-By $HOSTNAME;',
+  line    => '\nadd_header X-Served-By $HOSTNAME;',
   require => Package['nginx'],
 }
 
