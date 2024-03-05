@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 #configures two ubuntu machine to have same specification
+apt update
+apt install -y nginx
+apt update
+apt install -y haproxy
+echo "Hello World!" > /var/www/html/index.html
 # shellcheck disable=SC2154
-replacement="server {\n\tadd_header X-Served-By $hostname;"
+replacement="server {\n\tadd_header X-Served-By $HOSTNAME;"
 sed -i "s/server {/$replacement/" /etc/nginx/sites-enabled/default
 service nginx restart
 
