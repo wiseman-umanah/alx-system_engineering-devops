@@ -1,36 +1,5 @@
 #!/usr/bin/env bash
-# Install and configures a server -Nginx
-if [ ! -f /usr/sbin/nginx ]; then
-	apt update
-	apt install -y nginx
-	ufw allow 'Nginx HTTP'
-fi
-echo "
-<!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to nginx!</title>
-<style>
-    body {
-           width: 35em;
-           margin: 0 auto;
-           font-family: Tahoma, Verdana, Arial, sans-serif;
-       }
-</style>
-</head>
-<body>
-<h1>Welcome to nginx!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
+# debugging nginx port 80
 
-<p>For online documentation and support please refer to
-<a href="http://nginx.org/">nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
-
-<p><em>Thank you for using nginx.</em></p>
-</body>
-</html>
-" > /var/www/html/index.html
-service nginx start
-
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
