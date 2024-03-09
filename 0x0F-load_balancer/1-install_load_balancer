@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 # install and configure haproxy
-
-if [ ! -f /usr/bin/nginx ]; then
-        apt update;
-        apt install haproxy;
-fi
-service haproxy start;
+apt update
+apt install -y haproxy
+service haproxy start
 echo "
 frontend web-balancer
         bind *:80
