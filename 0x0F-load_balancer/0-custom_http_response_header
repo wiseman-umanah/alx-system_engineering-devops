@@ -1,9 +1,44 @@
 #!/usr/bin/env bash
-# Configures a new Ubuntu server with a custom HTTP header response
-apt-get -y update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo 'Holberton School' > /var/www/html/index.nginx-debian.html
-sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-sed -i '/listen 80 default_server;/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
+# install nginx with configurations to web_servers
+if [ ! -f /usr/bin/nginx ]; then
+        apt update
+        apt install -y nginx
+        ufw allow "Nginx HTTP"
+fi
 service nginx start
+echo "
+server {
+        listen 80;
+        listen [::]:80;
+
+
+        root /var/www/html;
+        index index.html index.htm;
+
+        location / {
+                add_header X-Served-By $HOSTNAME;
+                try_files \$uri \$uri/ =404;
+        }
+
+        error_page 404 = @fallback;
+
+        location @fallback {
+                return 302 https://www.google.com;
+        }
+} " > /etc/nginx/sites-enabled/default
+
+echo "
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Test Server</title>
+        <head>
+        <body>
+                Hello World!!
+                This is running on server --> $HOSTNAME
+        </body>
+</html>
+" > /var/www/html/index.html
+
+nginx -t
+nginx -s reload
