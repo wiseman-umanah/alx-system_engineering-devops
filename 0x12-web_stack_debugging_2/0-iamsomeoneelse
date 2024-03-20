@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 # script should run the whoami command under the user passed as an argument
-runuser -l "$1" -c "whoami"
+home_dir=$(getent passwd "$1" | cut -d: -f6)
+if [ -z "$home_dir" ] || [ ! -d "$home_dir" ]; then
+    echo "$1"
+else
+	runuser -l "$1" -c "whoami"
+fi
