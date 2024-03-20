@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # nginx must be listening on all active IPs on port 8080 with nginx as user
-sed -i 's/#user www-data/user nginx/' /etc/nginx/nginx.conf
+pkill nginx
+chown nginx:nginx /etc/nginx/nginx.conf
+chmod 700 /etc/nginx/nginx.conf
 sed -i 's/80/8080/g' /etc/nginx/sites-available/default
-sudo -u nginx nginx -t
+pkill apache2
 sudo -u nginx nginx -s reload
 
