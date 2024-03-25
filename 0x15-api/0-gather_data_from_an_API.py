@@ -17,4 +17,4 @@ if __name__ == "__main__":
     string = f"Employee {employeeName} is done with tasks"
     print(f"{string}({len(completed)}/{len(todos)}):")
     for i in completed:
-        print("\t ", i)
+        print("\t", i)
