@@ -15,6 +15,8 @@ def recurse(subreddit, word, after=None):
         # request to api
         r = requests.get(link, headers={"User-Agent": "My-User-Agent"},
                          params={"after": after})
+        if r.status_code != 200:
+            return None
         # loop through each movie, get title and check if word exist
         # (case-insensitive)
         for i in r.json().get("data").get("children"):
@@ -36,7 +38,7 @@ def count_words(subreddit, word_list):
     """counts all keywords in list"""
     # checks if list is empty
     if not word_list:
-        return 0
+        return None
     # sorts list alphabetically
     word_list = sorted(word_list)
     # get count of word
