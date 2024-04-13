@@ -69,5 +69,8 @@ This incident has highlighted significant weaknesses in our application's error 
 > Before Fix 
 ![alt text](image.png)
 
+> During Bug Fixing 
+![alt text](image-2.png)
+
 > After Fix
 ![alt text](image-1.png)
